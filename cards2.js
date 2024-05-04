@@ -22,3 +22,33 @@ const USERS = [
       },
     },
   ];
+
+ //Función para crear secciones dentro de la card
+ function createElements() {
+    const cardObj = {
+      name_section: document.createElement("h3"),
+      desc_section: document.createElement("p"),
+      age_section: document.createElement("p"),
+      book_section: document.createElement("div"),
+    };
+    return cardObj;
+  };
+
+  //ojo declaramos las secciones pero aún no se implementan. Se crean las secciones dentro de un objeto.
+
+  //Inyectar info a las tarjetas
+  function injectData(obj, user) {
+    const bookList = user.fav_books.books.map((e) => {
+        const item = document.createElement("ul");
+        item.textContent = e;
+        return item;
+    });
+    obj.name_section.textContent = user.username;
+    obj.desc_section.textContent = user.desc;
+    obj.age_section.textContent = user.age;
+    obj.book_section.append(...bookList);
+    renderCard(obj);
+    };
+    
+  //map crea elementos con etiqueta ul
+ 
